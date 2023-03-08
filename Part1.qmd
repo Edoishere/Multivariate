@@ -1,0 +1,195 @@
+---
+title: "Multivariate Statistical Analysis"
+format: pdf
+---
+
+# Part 1 - Linear algebra, mean and variance
+
+## Notations
+
+We will use the following conventions:
+
+-   We use uppercase letter $X$ and $Y$ when we are referring to a generic random variable;
+
+-   If $X$ is a vector, its components are referred by subscript: $X_i$ ;
+
+-   Observed values are written in lowercase: $x$ $y$ ;
+
+-   Bold uppercase letter $\mathbf X$ refers to matrix, the value of the $i$-th row and $j$-th column of the matrix $\mathbf X$ is indicated with the notation $x_{i,j}$ ;
+
+-   In general vectors will not have the bold font, except when they have $n$ components.
+
+Furthermore we assume that each vector is a column vector and the traspose is denoted with $x^T$. The basic situation will be this: we have a vector of $p$ random variable $X = (X_1,\dots,X_p)$ and we have $n$ observation denoted $x_1,\dots,x_n$ where $x_i = (x_{i,1},\dots,x_{i,p})$.
+
+## Mean vector
+
+The sample mean vector $\overline x$ is defined as
+
+$$
+  \overline x = \frac{1}{n} \sum_{i = 1}^n x_i = 
+  \begin{bmatrix}
+    \overline x_1 \\
+    \overline x_2 \\
+    \vdots \\
+    \overline x_p  
+  \end{bmatrix}
+$$ 
+
+Using a more compact matrix formula we can write:
+
+$$
+
+\begin{bmatrix}
+  \overline x_1 \\
+  \overline x_2 \\
+  \vdots \\
+  \overline x_p  
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+  n^{-1} \sum_i x_{i,1}\\
+  n^{-1} \sum_i x_{i,2}\\
+  \vdots \\
+  n^{-1} \sum_i x_{i,p} 
+\end{bmatrix}
+
+=
+
+\begin{bmatrix}
+  n^{-1} \mathbf{x}_1^T \mathbf 1\\
+  n^{-1} \mathbf{x}_2^T \mathbf 1\\
+  \vdots \\
+  n^{-1} \mathbf{x}_p^T \mathbf 1 
+\end{bmatrix}
+
+=
+
+\frac{1}{n} \mathbf X^T \mathbf 1 
+$$
+It is also possible define the mean of $X = (X_1,\dots, X_p)$ over all possible value in the population. This object is called population mean:
+$$
+\mathbb E (X) = 
+  \begin{bmatrix}
+  \mathbb E (X_1) \\
+  \mathbb E (X_2) \\
+  \vdots \\
+  \mathbb E (X_p) 
+\end{bmatrix}
+= 
+
+\mu 
+$$
+With this definition we have again the unbiased:
+$$
+
+\mathbb (\overline X) = 
+
+\begin{bmatrix}
+  \mathbb E (\overline X_1) \\
+  \mathbb E (\overline X_2) \\
+  \vdots \\
+  \mathbb E (\overline x_p)
+\end{bmatrix}
+
+= 
+
+\begin{bmatrix}
+  \mu_1 \\
+  \mu_2 \\
+  \vdots \\
+  \mu_p
+\end{bmatrix}
+
+= 
+
+\mu 
+
+$$
+Note that, in general, $\oveline x$ is never equal to $\mu$.
+
+## Covariance matrix
+
+The sample covariance matrix $\mathbf S = (s_{j,k})$ is the $p\times p$ matrix:
+$$
+
+\mathbf S 
+
+=
+
+\begin{bmatrix}
+  s_{1,1} & s_{1,2} & \dots & s_{1,p} \\
+  s_{2,1} & s_{2,2} & \dots & s_{2,p} \\
+  \vdots & \vdots & & \vdots \\
+  s_{p,1} & s_{p,2} & \dots & s_{p,p} 
+\end{bmatrix}
+
+$$
+where 
+$$
+  s_{j,k} = \frac{1}{n-1} \sum_{i = 1}^n (x_{i,j} - \overline x_j)(x_{i,k} - \overline x_k) = \frac{1}{n-1} \sum_{i = 1}^n (x_{i,j}\,x_{i,k} - n \overline x_j \, \overline x_k) 
+$$
+With this definition can be observed that $\mathbf S$ is a symmetric matrix, that is $\mathbf S^T = \mathbf S$. The sample covariance matrix can be also computed with the vectors:
+$$
+  \mathbf S = \frac{1}{n-1} \sum_{i=1}^n (x_i - \overline x)(x_i - \overline x)^T
+$$
+Note that in the previous formula we have a $p\times 1$ vector and a $1 \times p$ vector so the result, as expected is a $p\times p$. Notice that the first vector is a column vector and the second is a row vector, so what we are doing is not a scalar product. We can rewrite the formula in a more compact form, we notice that:
+$$
+  \begin{bmatrix}
+    x_{1,j} - \overline x_j \\
+    x_{2,j} - \overline x_j \\
+    \vdots \\
+    x_{n,j} - \overline x_j
+  \end{bmatrix}
+  = 
+  x_j - \overline x_j \mathbf 1 
+$$
+We can combine all the vector below in a matrices and get:
+$$
+  \begin{bmatrix}
+    \vdots & & \vdots \\
+    \mathbf x_1 & \dots & \mathbf x_p \\
+    \vdots & & \vdots
+  \end{bmatrix}
+  -
+  \begin{bmatrix}
+    \vdots & & \vdots \\
+    \overline x_1 \mathbf 1  & \dots & \overline x_p \mathbf 1  \\
+    \vdots & & \vdots
+  \end{bmatrix}
+  
+  = 
+  
+  \mathbf X - \mathbf 1 \mathbf X^T
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
